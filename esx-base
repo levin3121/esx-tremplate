@@ -1,0 +1,23 @@
+git clone https://github.com/DEIN_USER/esx-template.git
+cd esx-template
+
+# Struktur erstellen (falls du neu machen möchtest):
+mkdir -p resources/[essentialmode]/es_extended
+mkdir -p resources/[esx]/{esx_identity,esx_skin,skinchanger,esx_menu_default}
+mkdir -p resources/[dependencies]/{mysql-async,cron,esx_datastore}
+
+# server.cfg erstellen
+tee server.cfg <<'EOF'
+ensure es_extended
+ensure esx_identity
+ensure skinchanger
+ensure esx_skin
+ensure esx_menu_default
+ensure mysql-async
+ensure cron
+ensure esx_datastore
+EOF
+
+git add .
+git commit -m "Minimal ESX template"
+git push origin main
