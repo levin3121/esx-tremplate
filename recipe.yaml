@@ -1,0 +1,55 @@
+name: Minimal-ESX
+description: Minimalistisches ESX-Template mit Identity, Skin und Datenbank-Unterstützung
+
+tasks:
+  - action: download_github
+    src: esx-framework/es_extended
+    ref: legacy
+    dest: ./resources/[essentialmode]/es_extended
+
+  - action: download_github
+    src: esx-framework/esx_identity
+    ref: master
+    dest: ./resources/[esx]/esx_identity
+
+  - action: download_github
+    src: esx-framework/esx_skin
+    ref: master
+    dest: ./resources/[esx]/esx_skin
+
+  - action: download_github
+    src: esx-framework/skinchanger
+    ref: master
+    dest: ./resources/[esx]/skinchanger
+
+  - action: download_github
+    src: esx-framework/esx_menu_default
+    ref: master
+    dest: ./resources/[esx]/esx_menu_default
+
+  - action: download_github
+    src: bromodigital/mysql-async
+    ref: master
+    dest: ./resources/[dependencies]/mysql-async
+
+  - action: download_github
+    src: esx-framework/cron
+    ref: master
+    dest: ./resources/[dependencies]/cron
+
+  - action: download_github
+    src: esx-framework/esx_datastore
+    ref: master
+    dest: ./resources/[dependencies]/esx_datastore
+
+server_files:
+  - path: ./server.cfg
+    content: |
+      ensure mysql-async
+      ensure cron
+      ensure esx_datastore
+      ensure es_extended
+      ensure skinchanger
+      ensure esx_skin
+      ensure esx_menu_default
+      ensure esx_identity
